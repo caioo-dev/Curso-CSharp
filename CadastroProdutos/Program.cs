@@ -9,6 +9,22 @@ namespace CadastroProdutos
         public double Preco;
         public int Quantidade;
 
+        public Produto()
+        {
+            Quantidade = 10;
+        }
+
+        public Produto(string nome, double preco, int quantidade) : this(nome, preco) // referenciando o construtor com os argumentos nome e preco para não repetir codigos
+        {
+            Quantidade = quantidade;
+        }
+
+        public Produto(string nome, double preco) : this() // referenciando o construtor padrao com a quantidade 10 para esse construtor
+        {
+            Nome = nome;
+            Preco = preco;
+        }
+
         public double ValorTotalEmEstoque()
         {
             return Preco * Quantidade;
@@ -39,15 +55,23 @@ namespace CadastroProdutos
     {
         static void Main(string[] args)
         {
-            Produto produto = new Produto();
-
             Console.WriteLine("Entre os dados do produto:");
             Console.Write("Nome: ");
-            produto.Nome = Console.ReadLine();
+            string nome = Console.ReadLine();
             Console.Write("Preço: ");
-            produto.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.Write("Quantidade no estoque: ");
-            produto.Quantidade = int.Parse(Console.ReadLine());
+            double preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Produto produto = new Produto(nome, preco);
+
+            Produto produto2 = new Produto();
+
+            Produto produto3 = new Produto
+            {
+                Nome = "TV",
+                Preco = 500.00,
+                Quantidade = 20
+
+            };
 
             Console.WriteLine();
             Console.WriteLine("Dados do produto: " + produto);
