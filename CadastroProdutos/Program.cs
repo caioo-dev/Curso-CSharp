@@ -21,27 +21,24 @@ namespace CadastroProdutos
             _quantidade = quantidade;
         }
 
-        public string GetNome()
+        public string Nome
         {
-            return _nome;
+            get { return _nome; }
+            set { 
+                if (value != null && value.Length > 1)
+                { 
+                _nome = value; 
+                }}
         }
 
-        public void SetNome(string nome)
+        public double Preco
         {
-            if (nome != null && nome.Length > 1)
-            {
-                _nome = nome;
-            }
+            get { return _preco; }
         }
 
-        public double GetPreco()
+        public int Quantidade
         {
-            return _preco;
-        }
-
-        public int GetQuantidade()
-        {
-            return _quantidade;
+            get { return _quantidade; }
         }
 
         public double ValorTotalEmEstoque()
@@ -76,11 +73,14 @@ namespace CadastroProdutos
         {
             Produto produto = new Produto("TV", 500.00, 10);
 
-            Console.WriteLine(produto.GetNome());
+            Console.WriteLine(produto.Nome);
 
-            produto.SetNome("TV 4K");
-            Console.WriteLine(produto.GetNome());
-            Console.WriteLine(produto.GetPreco());
+            produto.Nome = "TV 4K";
+            Console.WriteLine(produto.Nome);  
+
+            //produto.Preco = 490.00, nao ira conseguir alterar pois so temos a propriedade de obter o preco
+            Console.WriteLine(produto.Preco);
+            Console.WriteLine(produto.Quantidade);
 
         }
     }
