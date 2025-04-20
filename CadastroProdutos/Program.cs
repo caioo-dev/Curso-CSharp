@@ -5,48 +5,67 @@ namespace CadastroProdutos
 
     public class Produto
     {
-        public string Nome;
-        public double Preco;
-        public int Quantidade;
+        private string _nome;
+        private double _preco;
+        private int _quantidade;
 
         public Produto()
         {
-            Quantidade = 10;
+
         }
 
-        public Produto(string nome, double preco, int quantidade) : this(nome, preco) // referenciando o construtor com os argumentos nome e preco para não repetir codigos
+        public Produto(string nome, double preco, int quantidade)
         {
-            Quantidade = quantidade;
+            _nome = nome;
+            _preco = preco;
+            _quantidade = quantidade;
         }
 
-        public Produto(string nome, double preco) : this() // referenciando o construtor padrao com a quantidade 10 para esse construtor
+        public string GetNome()
         {
-            Nome = nome;
-            Preco = preco;
+            return _nome;
+        }
+
+        public void SetNome(string nome)
+        {
+            if (nome != null && nome.Length > 1)
+            {
+                _nome = nome;
+            }
+        }
+
+        public double GetPreco()
+        {
+            return _preco;
+        }
+
+        public int GetQuantidade()
+        {
+            return _quantidade;
         }
 
         public double ValorTotalEmEstoque()
         {
-            return Preco * Quantidade;
+            return _preco * _quantidade;
         }
 
         public void AdicionarProdutos(int quantidade)
         {
-            Quantidade += quantidade;
+            _quantidade += quantidade;
         }
 
         public void RemoverProdutos(int quantidade)
         {
-            Quantidade -= quantidade;
+            _quantidade -= quantidade;
         }
 
         public override string ToString()
         {
-            return Nome
+            return _nome
                 + ", $ "
-                + Preco.ToString("F2", CultureInfo.InvariantCulture)
+                + _preco.ToString("F2", CultureInfo.InvariantCulture)
                 + ", "
-                + Quantidade
+                + _quantidade
                 + " unidades, Total: $ "
                 + ValorTotalEmEstoque().ToString("F2", CultureInfo.InvariantCulture);
         }
@@ -55,56 +74,14 @@ namespace CadastroProdutos
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Entre os dados do produto:");
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
-            Console.Write("Preço: ");
-            double preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Produto produto = new Produto("TV", 500.00, 10);
 
-            Produto produto = new Produto(nome, preco);
+            Console.WriteLine(produto.GetNome());
 
-            Produto produto2 = new Produto();
+            produto.SetNome("TV 4K");
+            Console.WriteLine(produto.GetNome());
+            Console.WriteLine(produto.GetPreco());
 
-            Produto produto3 = new Produto
-            {
-                Nome = "TV",
-                Preco = 500.00,
-                Quantidade = 20
-
-            };
-
-            Console.WriteLine();
-            Console.WriteLine("Dados do produto: " + produto);
-
-            Console.WriteLine();
-            Console.Write("Você deseja adicionar mais produtos ao estoque? (S/N): ");
-            char pergunta = char.Parse(Console.ReadLine());
-
-            if (pergunta == 'N' || pergunta == 'n')
-            {
-                System.Environment.Exit(1);
-            }
-
-            Console.Write("Digite o número de produtos a ser adicionado ao estoque: ");
-            int qte = int.Parse(Console.ReadLine());
-            produto.AdicionarProdutos(qte);
-
-            Console.WriteLine("Dados atualizados: " + produto);
-
-            Console.WriteLine();
-            Console.Write("Você deseja remover produtos do estoque? (S/N): ");
-            pergunta = char.Parse(Console.ReadLine());
-
-            if (pergunta == 'N' || pergunta == 'n')
-            {
-                System.Environment.Exit(1);
-            }
-
-            Console.Write("Digite o número de produtos a ser removido do estoque: ");
-            qte = int.Parse(Console.ReadLine());
-            produto.RemoverProdutos(qte);
-
-            Console.WriteLine("Dados atualizados: " + produto);
         }
     }
 }
