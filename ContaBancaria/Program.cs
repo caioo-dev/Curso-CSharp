@@ -1,26 +1,23 @@
-﻿using System.ComponentModel;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace ContaBancaria
 {
 
     public class Conta
     {
-        public string IdConta { get; }
-        public string NomeTitular { get; private set; }
+        public string IdConta { get; private set; }
+        public string NomeTitular { get; set; }
         public double Saldo { get; private set; }
-
-        public Conta(string idConta, string nomeTitular, double saldo)
-        {
-            IdConta = idConta;
-            NomeTitular = nomeTitular;
-            Saldo = saldo;
-        }
 
         public Conta(string idConta, string nomeTitular)
         {
             IdConta = idConta;
             NomeTitular = nomeTitular;
+        }
+
+        public Conta(string idConta, string nomeTitular, double depositoInicial) : this(idConta, nomeTitular)
+        {
+            Deposito(depositoInicial);
         }
 
         public void Deposito(double valorDeposito)
@@ -30,7 +27,8 @@ namespace ContaBancaria
 
         public void Saque(double valorSaque)
         {
-            Saldo -= valorSaque + 5;
+            Saldo -= valorSaque;
+            Saldo -= 5.0;
         }
 
         public override string ToString()
@@ -47,23 +45,29 @@ namespace ContaBancaria
         {
             static void Main(string[] args)
             {
+
+                Conta conta;
+
                 Console.Write("Entre o número de conta: ");
-                string IdConta = Console.ReadLine();
+                string idConta = Console.ReadLine();
 
                 Console.Write("Entre o titular da conta: ");
-                string NomeTitular = Console.ReadLine();
+                string nomeTitular = Console.ReadLine();
 
                 Console.Write("Haverá depósito inicial (s/n)? ");
-                char Resposta = char.Parse(Console.ReadLine());
+                char resposta = char.Parse(Console.ReadLine());
 
-                double SaldoInicial = 0.0;
-                if (Resposta == 's')
+                if (resposta == 's' || resposta == 'S')
                 {
                     Console.Write("Entre o valor de depósito inicial: ");
-                    SaldoInicial = double.Parse(Console.ReadLine());
+                    double saldoInicial = double.Parse(Console.ReadLine());
+                    conta = new Conta(idConta, nomeTitular, saldoInicial);
+                }
+                else
+                {
+                    conta = new Conta(idConta, nomeTitular);
                 }
 
-                Conta conta = new Conta(IdConta, NomeTitular, SaldoInicial);
 
                 Console.WriteLine();
                 Console.WriteLine("Dados da conta: ");
