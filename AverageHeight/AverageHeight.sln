@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageHeight", "AverageHeight.csproj", "{CFE2100E-60C9-41FB-8A3A-551EDF88D42C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFE2100E-60C9-41FB-8A3A-551EDF88D42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE2100E-60C9-41FB-8A3A-551EDF88D42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE2100E-60C9-41FB-8A3A-551EDF88D42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE2100E-60C9-41FB-8A3A-551EDF88D42C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FD438EF-DAB8-4C00-B84D-BBE82B0ACBCF}
+	EndGlobalSection
+EndGlobal
