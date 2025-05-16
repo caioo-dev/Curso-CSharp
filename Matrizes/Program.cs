@@ -32,7 +32,7 @@
             Console.WriteLine("Main diagonal: ");
             for (int i = 0; i < N; i++)
             {
-                Console.Write(arr[i, i] + "");
+                Console.Write(arr[i, i] + " ");
             }
             Console.WriteLine();
 
