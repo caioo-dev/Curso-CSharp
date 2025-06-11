@@ -12,7 +12,7 @@ namespace Herança.Entities
 
         public SavingsAccount()
         {
-            
+
         }
 
         public SavingsAccount(int number, string holder, double balance, double interestRate) : base(number, holder, balance)
@@ -23,6 +23,12 @@ namespace Herança.Entities
         public void UpdateBalance()
         {
             Balance += Balance * InterestRate;
+        }
+
+        public override void Withdraw(double amount)
+        {
+            base.Withdraw(amount);
+            Balance -= 2.0;
         }
     }
 }
