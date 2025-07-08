@@ -9,10 +9,10 @@ namespace Herança.Entities
     class SavingsAccountPlus : SavingsAccount//: SavingsAccount. erro pois savingsaccount esta sealed
     {
         //metodo selado nao pode ser sobescrito novamente
-        public override void Withdraw(double amount)
-        {
+        //public override void Withdraw(double amount)
+        //{
 
-        }
+        //}
 
     }
 }
